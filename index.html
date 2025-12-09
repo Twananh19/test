@@ -1,131 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>QUIC Deployment in Vietnam</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background-color: #002f6c;
-      padding: 20px;
-      text-align: center;
-      color: white;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    nav {
-      background: #004b9b;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    main {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    section {
-      margin-bottom: 50px;
-    }
-    h2 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 10px;
-    }
-    footer {
-      text-align: center;
-      background: #002f6c;
-      color: white;
-      padding: 20px;
-    }
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIC Deployment in Vietnam</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-light: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+        /* Navbar */
+        .navbar {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 20%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero */
+        .hero {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 { margin: 0 0 1rem 0; font-size: 2.5rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto 2rem auto; }
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #2980b9; }
+
+        /* Sections */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        /* Results Grid */
+        .stats-grid {
+            display: flex;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            justify-items: center;
+            justify-content: space-evenly;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label { color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Map */
+        .map-section { background: var(--bg-light); }
+        iframe { width: 100%; height: 600px; border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        /* Methodology */
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .method-item h3 { color: var(--primary-color); border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+
+        /* Authors */
+        .authors-list {
+            display: flex;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .author-item { display: inline-block; margin: 0.5rem 1rem; font-weight: bold; }
+        .author-affil { display: block; font-size: 0.85rem; color: #777; font-weight: normal; }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>QUIC Deployment in Vietnam</h1>
-    <p>Insights from our 2025 nationwide QUIC scanning study</p>
-  </header>
+    <nav class="navbar">
+      <div style="display: flex; align-items: center;">
+        <a href="#" class="navbar-brand">QUIC Vietnam</a>
+        <div class="nav-links">
+            <a href="#intro">About</a>
+            <a href="#results">Results</a>
+            <a href="#map">Map</a>
+            <a href="#methodology">Methodology</a>
+            <a href="#authors">Authors</a>
+        </div>
+      </div>
 
-  <nav>
-    <a href="#methodology">Methodology</a>
-    <a href="#results">Results</a>
-    <a href="#map">Map</a>
-    <a href="#authors">Authors</a>
-  </nav>
+        <div class="nav-links">
+            <a href="">Log in</a>
+            <a href="">Register</a>
+        </div>
+    </nav>
 
-  <main>
-    <section id="intro">
-      <h2>Introduction</h2>
-      <p>
-        This project presents the first large-scale analysis of QUIC protocol deployment across Vietnam.
-        Using tools like ZMap, ZDNS, and QScanner, we scanned over 16 million IPv4 addresses to assess QUIC adoption and visualize its distribution geographically.
-      </p>
+    <header class="hero">
+        <h1>QUIC Deployment in Vietnam</h1>
+        <p>Insights from our 2025 nationwide QUIC scanning study</p>
+        <a href="#map" class="btn">View Interactive Map</a>
+    </header>
+
+    <section id="intro" class="container">
+        <h2 class="section-title">Introduction</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+            This project presents the first large-scale analysis of QUIC protocol deployment across Vietnam.
+            Using tools like ZMap, ZDNS, and QScanner, we scanned over 16 million IPv4 addresses to assess QUIC adoption and visualize its distribution geographically.
+        </p>
     </section>
 
-    <section id="methodology">
-      <h2>Methodology</h2>
-      <p>
-        Our scanning framework integrates:
-        <ul>
-          <li><strong>ZMap</strong> – for initial IP responsiveness over UDP:443</li>
-          <li><strong>ZDNS</strong> – for resolving hostnames from IPs</li>
-          <li><strong>QScanner</strong> – for full QUIC + TLS 1.3 handshakes</li>
-        </ul>
-        Each detected QUIC-enabled server was enriched with geolocation and AS data using IP2Location.
-      </p>
+    <section id="methodology" class="container">
+        <h2 class="section-title">Methodology</h2>
+        <div class="method-grid">
+            <div class="method-item">
+                <h3>1. ZMap</h3>
+                <p>Used for high-speed initial scanning of the entire Vietnamese IPv4 address space to detect responsiveness on UDP port 443.</p>
+            </div>
+            <div class="method-item">
+                <h3>2. ZDNS</h3>
+                <p>Performed reverse DNS lookups to resolve hostnames from responsive IP addresses, aiding in infrastructure identification.</p>
+            </div>
+            <div class="method-item">
+                <h3>3. QScanner</h3>
+                <p>Executed full QUIC and TLS 1.3 handshakes to verify protocol support, version negotiation, and cryptographic parameters.</p>
+            </div>
+        </div>
     </section>
 
-    <section id="results">
-      <h2>Results Overview</h2>
-      <ul>
-        <li><strong>8,337 QUIC-enabled IPs</strong> detected (≈0.05% of all scanned IPs in Vietnam)</li>
-        <li><strong>Top ASes</strong>: VNPT, Viettel, FPT Telecom</li>
-        <li><strong>QUIC version</strong>: 99.3% conform to IETF QUIC (RFC 9000)</li>
-        <li><strong>Active migration</strong>: Supported by 69.4% of servers</li>
-        <li><strong>TLS cipher suite</strong>: 80.5% use AES 128 GCM SHA256</li>
-      </ul>
+    <section id="results" style="background: #f4f7f6;">
+        <div class="container">
+            <h2 class="section-title">Result Overview </h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">8,337</span>
+                    <span class="stat-label">QUIC-Enabled IPs</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">99.3%</span>
+                    <span class="stat-label">IETF QUIC (RFC 9000)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Top ASes</span>
+                    <span class="stat-label">VNPT, Viettel, FPT</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">80.5%</span>
+                    <span class="stat-label">AES 128 GCM SHA256</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">69.4%</span>
+                    <span class="stat-label">Server-supported</span>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="map">
-      <h2>Interactive Map of QUIC Deployment</h2>
-      <p>The map below visualizes the geographic and AS-level distribution of QUIC-enabled servers across Vietnam.</p>
-      <iframe src="visualization.html"></iframe>
+    <section id="map" class="container">
+        <h2 class="section-title">Interactive Map of QUIC Deployment</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">The map below visualizes the geographic and AS-level distribution of QUIC-enabled servers across Vietnam.</p>
+        <iframe src="visualization.html" title="QUIC Map"></iframe>
     </section>
 
-    <section id="authors">
-      <h2>Authors</h2>
-      <p>
-        <strong>Thanh Trung Nguyen</strong> – Phenikaa University, HUST<br/>
-        <strong>Thanh Le</strong> – SOKENDAI, Japan<br/>
-        <strong>Minh Hai Vu, Phi Le Nguyen</strong> – HUST - SoICT<br/>
-        <strong>Kien Nguyen</strong> – Chiba University, Japan
-      </p>
-    </section>
-  </main>
 
-  <footer>
-    &copy; 2025 QUIC Vietnam • Funded by JSPS & VINIF • Hosted on GitHub Pages
-  </footer>
+    <section id="authors" class="container" style="background: #fff; border-top: 1px solid #eee;">
+        <h2 class="section-title">Authors</h2>
+        <div class="authors-list">
+            <div class="author-item">Thanh Trung Nguyen<span class="author-affil">Phenikaa University, HUST</span></div>
+            <div class="author-item">Thanh Le<span class="author-affil">SOKENDAI, Japan</span></div>
+            <div class="author-item">Minh Hai Vu<span class="author-affil">HUST - SoICT</span></div>
+            <div class="author-item">Phi Le Nguyen<span class="author-affil">HUST - SoICT</span></div>
+            <div class="author-item">Kien Nguyen<span class="author-affil">Chiba University, Japan</span></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 QUIC Vietnam • Funded by JSPS & VINIF • Hosted on GitHub Pages</p>
+    </footer>
 
 </body>
 </html>
