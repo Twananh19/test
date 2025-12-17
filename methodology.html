@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology - QUIC Deployment in Vietnam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+      <div style="display: flex; align-items: center;">
+        <a href="index.html" class="navbar-brand">QUIC Vietnam</a>
+        <div class="nav-links">
+            <a href="index.html" >About</a>
+            <a href="index.html#map">Map</a>
+            <a href="results.html">Results</a>
+            <a href="methodology.html" class="active">Methodology</a>
+            <a href="authors.html">Authors</a>
+        </div>
+      </div>
+
+        <div class="nav-links">
+            <a href="">Log in</a>
+            <a href="">Register</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Methodology</h1>
+    </header>
+
+    <section id="methodology" class="container">
+        <p style="font-size: 1.1rem; margin-bottom: 3rem;">
+            Full details on the methodology behind our QUIC deployment analysis are available in our <a href="https://github.com/quic-vn/quic-vn.github.io">project repository</a>. You can also browse the <a href="https://github.com/quic-vn/quic-vn.github.io">source code</a> used for visualization.
+        </p>
+
+        <div class="method-section">
+            <h2>Construction of the Dataset</h2>
+            <p>
+                We designed a multi-stage scanning pipeline to accurately identify and characterize QUIC deployment across the Vietnamese Internet. Our approach ensures comprehensive coverage by targeting the entire IPv4 address space allocated to Vietnam, while minimizing network intrusion through efficient scanning techniques.
+            </p>
+            <p>
+                The process begins with broad reachability testing and narrows down to specific protocol handshakes. We rely on <a href="https://doi.org/10.17487/RFC9000">RFC 9000</a> <a href="index.html#ref-1">[RFC 9000]</a> to verify compliance with the standardized IETF QUIC protocol, distinguishing it from legacy versions like gQUIC. This distinction is critical as early deployments <a href="index.html#ref-2">[Zirngibl et al., 2021]</a> often differ significantly from the final standard.
+            </p>
+        </div>
+
+        <div class="method-section">
+            <h2>Properties of Tools & Data Sources</h2>
+
+            <div class="method-item">
+                <div class="method-header">
+                    <h3>ZMap Scanner</h3>
+                    <a href="https://zmap.io" target="_blank" class="method-btn">Visit tool page</a>
+                </div>
+                <p>
+                    <a href="https://zmap.io">ZMap</a> <a href="index.html#ref-7">[Durumeric et al., 2013]</a> is a fast single-packet network scanner designed for Internet-wide network surveys. We utilized ZMap to perform the initial discovery phase, scanning approximately 16 million IPv4 addresses.
+                </p>
+                <p>
+                    The scan targets UDP port 443, the standard port for QUIC traffic. This step filters the vast address space down to a manageable list of potentially active hosts, which are then passed to subsequent stages for deeper analysis.
+                </p>
+            </div>
+
+            <div class="method-item">
+                <div class="method-header">
+                    <h3>ZDNS</h3>
+                    <a href="https://github.com/zmap/zdns" target="_blank" class="method-btn">Visit tool page</a>
+                </div>
+                <p>
+                    Following the discovery of responsive IP addresses, we employed <a href="https://github.com/zmap/zdns">ZDNS</a> to perform large-scale reverse DNS lookups. This tool allows us to map IP addresses to their domain names and infrastructure providers.
+                </p>
+                <p>
+                    By resolving these addresses, we can categorize hosts into Internet Service Providers (ISPs), Content Delivery Networks (CDNs), or hosting services, providing context to the raw deployment numbers.
+                </p>
+            </div>
+
+            <div class="method-item">
+                <div class="method-header">
+                    <h3>QScanner</h3>
+                    <a href="https://github.com/tumi8/qscanner" target="_blank" class="method-btn">Visit tool page</a>
+                </div>
+                <p>
+                    For the detailed protocol analysis, we deployed <a href="https://github.com/tumi8/qscanner">QScanner</a>, a specialized tool developed for identifying QUIC deployments <a href="index.html#ref-3">[Zirngibl et al., 2024]</a>. Unlike simple port scanners, QScanner performs a full cryptographic handshake.
+                </p>
+                <p>
+                    It negotiates QUIC versions, verifies TLS 1.3 parameters, and extracts certificate chains. This allows us to confirm that a server is not just listening on port 443 but is correctly speaking the QUIC protocol. We also use it to detect support for advanced features like Connection Migration <a href="index.html#ref-8">[Buchet & Pelsser, 2025]</a>.
+                </p>
+            </div>
+
+            <div class="method-item">
+                <div class="method-header">
+                    <h3>VNNIC Data</h3>
+                    <a href="https://vnnic.vn/" target="_blank" class="method-btn">Visit provider page</a>
+                </div>
+                <p>
+                    Our target IP list is derived from the Vietnam Internet Network Information Center (VNNIC). We use their officially published statistics and IP allocation lists to define the boundaries of the Vietnamese Internet.
+                </p>
+                <p>
+                    The dataset covers over 16 million IPv4 addresses. We cross-reference this with other ranking methodologies like <a href="https://tranco-list.eu">Tranco</a> <a href="index.html#ref-9">[Le Pochat et al., 2019]</a> and traffic reports <a href="index.html#ref-5">[e-Conomy SEA 2024]</a> to ensure our study reflects the most relevant and active portions of the local network ecosystem.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 QUIC Vietnam • Funded by JSPS & VINIF • Hosted on GitHub Pages</p>
+    </footer>
+</body>
+</html>
