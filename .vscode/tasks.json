@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "append_css",
+			"type": "shell",
+			"command": "echo \"/* Results Details */\n.results-detail {\n    max-width: 900px;\n    margin: 0 auto;\n}\n.detail-item {\n    background: #fff;\n    border-radius: 8px;\n    padding: 1.5rem;\n    margin-bottom: 1.5rem;\n    box-shadow: 0 2px 4px rgba(0,0,0,0.05);\n    border-left: 5px solid var(--accent-color);\n}\n.detail-item h3 {\n    color: var(--primary-color);\n    margin-top: 0;\n    font-size: 1.3rem;\n    margin-bottom: 0.5rem;\n}\n.detail-item p {\n    color: #555;\n    margin-bottom: 0;\n    line-height: 1.6;\n}\" >> /home/twan/Downloads/quic-vn.github.io/style.css"
+		},
+		{
+			"label": "append_css_grid",
+			"type": "shell",
+			"command": "echo \"\n/* Info Grid (Updates & Related) */\n.two-column-grid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 3rem;\n    margin-top: 2rem;\n    border-top: 1px solid #eee;\n    padding-top: 2rem;\n}\n\n@media (max-width: 768px) {\n    .two-column-grid {\n        grid-template-columns: 1fr;\n    }\n}\n\n.info-column h3 {\n    font-size: 1.8rem;\n    margin-bottom: 1rem;\n    color: var(--text-color);\n    font-weight: normal;\n}\n\n.info-list {\n    list-style-type: disc;\n    padding-left: 1.5rem;\n    color: #333;\n}\n\n.info-list li {\n    margin-bottom: 0.8rem;\n    line-height: 1.5;\n}\n\n.info-list a {\n    color: var(--accent-color);\n    text-decoration: none;\n}\n\n.info-list a:hover {\n    text-decoration: underline;\n}\n\n.badge {\n    background-color: #28a745;\n    color: white;\n    padding: 0.1rem 0.4rem;\n    border-radius: 3px;\n    font-size: 0.8rem;\n    font-weight: bold;\n    margin-right: 0.3rem;\n}\" >> /home/twan/Downloads/quic-vn.github.io/style.css"
+		}
+	]
+}
